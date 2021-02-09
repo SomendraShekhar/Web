@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<a class="active" href="index.html"></a>
+		<a href="Theory.html"></a>
+		<a  href="Manual.html"></a>
+		<a  href="procedure.html"></a>
+		<a  href="pretest.html"></a>
+        
+	
+<meta charset="utf-8">
+<title>Disk_Scheduling(FCFS)</title>
+<script src="js/fcfs.js"></script>
+
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script src="js/jquery.min.js"></script>
+</head>
+
+<body style="background-color: lightgray">
+
+		
+			  
+		
+
+	<center><span style="font-size: 50px;"><b><u>Disk Scheduling-FCFS</u></b></span></center><br><br> 
+	<div id="container" style="overflow: auto; text-align: center; margin:0 auto;">
+		<div id="form">
+			<form  id="sdet">
+			    
+				
+				<h2>Initial Head Position : &nbsp;<input type="text" id = "spos" style="width: 400px;height: 30px;" placeholder="Initial head position"></h2>
+			    
+				
+				<h2>No. of tracks :&nbsp; <input type="text" id ="ndata" style="width: 400px;height: 30px;" placeholder="Number of tracks"></h2>
+				
+				<button class="button">Submit</button>
+				
+
+			</form>
+		</div>
+	</div><br>
+	<div id="chartContainer" style="height: 300px; width: 600px; margin: 0 auto;"></div><br>
+	
+
+
+	<center>
+		<div id="comparesstfbtn"> <button class="cmpbtn" style="display: none;"><b>Compare with SSTF</b></button> </div>
+	<div style="float: left;margin-left: 300px; width: 400px;">
+		<div id="show1"></div>
+		<div id="res1"></div>
+	</div>
+	<div style="float: right;margin-right: 300px;">
+		<div id="show2"></div>
+		<div id="res2"></div>
+	</div>
+	</center>
+	<div style="align-self:auto; display:none;" class="cmpbtn">
+					 <h3>Which of the algorithms used for disk scheduling is better?</h3>
+				     <input type="radio" value="FCFS" name="grp1" id="q11" style="font-size: 12">a)FCFS </br>
+
+				     <input type="radio" value="SSTF" name="grp1"id="q12" style="font-size: 12">b)SSTF</br>
+
+				     <h3>Find the Seek sequence in the given Track Sequence using FCFS algorithm,Where initial head position is given as 72,
+				     (54,13,60,76,47).</h3>
+				     <input type="radio" value="67" name="grp2" id="q21" style="font-size: 12">a)67 </br>
+				     <input type="radio" value="151" name="grp2"id="q22" style="font-size: 12">b)151</br>
+				     <input type="radio" value="134" name="grp2" id="q23" style="font-size: 12">a)134</br>
+				     <input type="radio" value="146" name="grp2" id="24" style="font-size: 12">a)146</br>
+
+				    
+				    
+
+				     <button id="button" onclick="fn1();">Clickme</button>
+	</div>
+	
+	
+</body>
+</html>

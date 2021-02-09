@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<script type="text/javascript">
+	
+function fn1()
+{
+   var q12=document.getElementById("q12");
+   
+   var q22=document.getElementById("q22");
+  if(q12.checked==true && q22.checked==true)
+  {
+  	alert("Ans of que1 is correct  :"+q12.value+"Ans of que2 is correct:"+q22.value);
+    window.location="index.html"
+}
+  else
+  {
+  	alert("ans incorrect");
+  }
+}
+
+
+</script>
+</head>
+<body>
+	<h3>Which of the algorithms used for disk scheduling is better?</h3>
+     <input type="radio" value="FCFS" name="grp1" id="q11" style="font-size: 12">a)FCFS </br>
+
+     <input type="radio" value="SSTF" name="grp1"id="q12" style="font-size: 12">b)SSTF<br>
+
+     <h3>Find the Seek sequence in the given Track Sequence using FCFS algorithm,Where initial head position is given as 72.
+     (54,13,60,76,47)</h3>
+     <input type="radio" value="67" name="grp2" id="q21" style="font-size: 12">a)67 </br>
+
+     <input type="radio" value="151" name="grp2"id="q22" style="font-size: 12">b)151<br>
+     <input type="radio" value="134" name="grp2" id="q23" style="font-size: 12">a)134</br>
+     <input type="radio" value="146" name="grp2" id="24" style="font-size: 12">a)146</br>
+
+    
+    
+
+<button id="button" onclick="fn1();">Clickme</button>
+
+</body>
+</html>

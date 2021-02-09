@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<body>
+<form class="questionForm" id="q">
+<h3> Ques:- Scheduling is :</h3>
+<ul>
+<li><input type="radio" name="q" id="q1" value="a" onclick="ansid(this.id)"/> Allow a job to use the processor</li>
+<li><input type="radio" name="q" id="q2" value="b" onclick="ansid(this.id)"/> Making proper use of processor</li>
+<li><input type="radio" name="q" id="q3" value="c" onclick="ansid(this.id)" /> All of  the mentioned  </li>
+<li><input type="radio"  name="q" id="q4" value="d" onclick="ansid(this.id)"/> None of the options</li>
+</ul>
+<button class="question-btn">Sumbit</button>
+</form>
+</body>
+<style>
+.questionForm
+{
+    position: absolute;
+    margin: 10px;
+    padding: 20px 20px 20px 20px;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+    height: 130px;
+}
+.question-btn
+{
+position: absolute;
+background: black;
+height:40px;
+width: 100px;
+color: #ccc;
+font-size: 18px;
+border-radius: 10px;
+transition: .6s;
+overflow: hidden;
+margin-bottom: 5px;
+}
+.question-btn:hover
+{
+    cursor: pointer;
+}
+</style>
+<script>
+var ansId;
+function ansid(id)
+{
+    ansId = id;
+}
+document.getElementById("q").addEventListener("submit",function(e){
+    validate();
+    e.preventDefault();
+});
+function validate()
+{
+    if(ansId ==='q1')
+    {
+        alert("Answer is right");
+        window.location="index.html"
+                
+    }
+    else{
+        alert("Answer is wrong");
+        window.location="pretest.html"
+       
+        }
+}
+</script>
+</html>

@@ -1,0 +1,102 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/inde.css">
+		<a class="active" href="index.html"></a>
+		<a href="Theory.html"></a>
+		<a  href="Manual.html"></a>
+		<a  href="procedure.html"></a>
+		<a  href="pretest.html"></a>
+		<title>Theory</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	</head>
+	<body style="background-color: lightgray">
+
+		<div class="topnav">
+  <a class="active" href="index.html">Simulation</a>
+  <a href="Theory.html">Theory</a>
+  <a href="Manual.html">Manual</a>
+  <a href="Procedure.html">Procedure</a>
+  <a href="pretest.html">Pretest</a>
+  
+</div>
+
+<h1>Disk Scheduling Algorithms</h1>
+<b>Disk scheduling</b> is done by operating systems to schedule I/O requests arriving for the disk. Disk scheduling is also known as I/O scheduling.
+
+<p>Disk scheduling is important because:</p><br>
+
+<p>Multiple I/O requests may arrive by different processes and only one I/O request can be served at a time by the disk controller. Thus other I/O requests need to wait in the waiting queue and need to be scheduled.</p>
+<ul>
+<li>Two or more request may be far from each other so can result in greater disk arm movement.</li>
+<li>Hard drives are one of the slowest parts of the computer system and thus need to be accessed in an efficient manner.</li>
+</ul>
+<p>There are many Disk Scheduling Algorithms but before discussing them let’s have a quick look at some of the important terms:</p><br><br>
+
+
+<p><ul>
+<li><b>Seek Time:</b>Seek time is the time taken to locate the disk arm to a specified track where the data is to be read or write. So the disk scheduling algorithm that gives minimum average seek time is better.</li><br>
+<li><b>Rotational Latency:</b> Rotational Latency is the time taken by the desired sector of disk to rotate into a position so that it can access the read/write heads. So the disk scheduling algorithm that gives minimum rotational latency is better.</li><br>
+<li><b>Transfer Time:</b> Transfer time is the time to transfer the data. It depends on the rotating speed of the disk and number of bytes to be transferred.
+Disk Access Time: Disk Access Time is:</li><br>
+</ul></p>
+<center>Disk Access Time = Seek Time + 
+                         Rotational Latency + 
+                         Transfer Time</center>
+</b><br>
+<p><ul><b><li>Disk Response Time:</b> Response Time is the average of time spent by a request waiting to perform its I/O operation. Average Response time is the response time of the all requests. Variance Response Time is measure of how individual request are serviced with respect to average response time. So the disk scheduling algorithm that gives minimum variance response time is better.</li></ul></p><br><br>
+
+<h2>Disk Scheduling Algorithms</h2>
+
+<p><b>FCFS:</b> FCFS is the simplest of all the Disk Scheduling Algorithms. In FCFS, the requests are addressed in the order they arrive in the disk queue.<br><br>
+
+<h3>Advantages:</h3>
+<ul>
+<li>Every request gets a fair chance.</li>
+<li>No indefinite postponement.<ul>
+</ul>
+<h3>Disadvantages:</h3>
+<ul>
+<li>Does not try to optimize seek time.</li>
+<li>May not provide the best possible service.</li>
+</ul>
+<b>SSTF:</b> In SSTF (Shortest Seek Time First), requests having shortest seek time are executed first. So, the seek time of every request is calculated in advance in the queue and then they are scheduled according to their calculated seek time. As a result, the request near the disk arm will get executed first. SSTF is certainly an improvement over FCFS as it decreases the average response time and increases the throughput of system.<br><br>
+<h3>Advantages:</h3>
+<ul>
+<li>Average Response Time decreases.</li>
+<li>Throughput increases.</li><br>
+</ul>
+<h3>Disadvantages:</h3>
+<ul>
+<li>Overhead to calculate seek time in advance.</li>
+<li>Can cause Starvation for a request if it has higher seek time as compared to incoming requests.</li>
+<li>High variance of response time as SSTF favours only some requests.</li><br>
+</ul>
+<b>SCAN:</b> In SCAN algorithm the disk arm moves into a particular direction and services the requests coming in its path and after reaching the end of disk, it reverses its direction and again services the request arriving in its path. So, this algorithm works as an elevator and hence also known as elevator algorithm. As a result, the requests at the midrange are serviced more and those arriving behind the disk arm will have to wait.<br>
+<h3>Advantages:</h3>
+<ul>
+<li>High throughput</li>
+<li>Low variance of response time</li>
+<li>Average response time</li>
+</ul>
+<h3>Disadvantages:</h3>
+<ul>
+<li>Long waiting time for requests for locations just visited by disk arm.</li>
+</ul><br><br>
+<b>CSCAN:</b> In SCAN algorithm, the disk arm again scans the path that has been scanned, after reversing its direction. So, it may be possible that too many requests are waiting at the other end or there may be zero or few requests pending at the scanned area.
+These situations are avoided in CSCAN algorithm in which the disk arm instead of reversing its direction goes to the other end of the disk and starts servicing the requests from there. So, the disk arm moves in a circular fashion and this algorithm is also similar to SCAN algorithm and hence it is known as C-SCAN (Circular SCAN).
+
+<h3>Advantages:</h3>
+<ul>
+<li>Provides more uniform wait time compared to SCAN</li>
+</ul><br>
+<b>LOOK:</b> It is similar to the SCAN disk scheduling algorithm except for the difference that the disk arm in spite of going to the end of the disk goes only to the last request to be serviced in front of the head and then reverses its direction from there only. Thus it prevents the extra delay which occurred due to unnecessary traversal to the end of the disk.<br><br>
+<b>CLOOK:</b> As LOOK is similar to SCAN algorithm, in similar way, CLOOK is similar to CSCAN disk scheduling algorithm. In CLOOK, the disk arm in spite of going to the end goes only to the last request to be serviced in front of the head and then from there goes to the other end’s last request. Thus, it also prevents the extra delay which occurred due to unnecessary traversal to the end of the disk.<br><br>
+Each algorithm is unique in its own way. Overall Performance depends on the number and type of requests.<br><br>
+
+<b>Note:</b>Average Rotational latency is generally taken as 1/2(Rotational latency).
+
+</p>
+	</body>
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/inde.css">
+  <a class="active" href="index.html"></a>
+    <a href="Theory.html"></a>
+    <a  href="Manual.html"></a>
+    <a  href="procedure.html"></a>
+    <a  href="pretest.html"></a>
+
+    
+<meta charset="utf-8">
+<title>Disk_Scheduling(SSTF)</title>
+<script src="js/fcfs.js"></script>
+
+  <script type="text/javascript">
+      window.onload = function () {
+    var num;
+    var startingHeadPos;
+    var sstfdtp = [];
+    var max;
+    var sstfdt=[];
+    var seekTime=0;
+    var queue2=[];
+    var headCurrentPos;
+    var tempt=0;
+    $("#sdet").submit(function(e){
+      num = $("#ndata").val();
+      startingHeadPos = $("#spos").val();
+      headCurrentPos = startingHeadPos;
+      var output="";
+      output +="<form id='data' method='post'>";
+      for(let i=0; i<num; i++){
+        output +="<input type='text' id='d-"+i+"' placeholder='Head Position "+(i+1)+"'>";
+      }
+      output +="<input type='submit'>";
+      output +="</form>";
+      $("#form").html(output);
+      e.preventDefault();
+    });
+    
+    $("#form").on("submit","#data",function(e){
+      sstfdtp=[];
+      sstfdtp.push({x:startingHeadPos,y:0});
+      for(let i=0;i<num;i++){
+        var sstftemp=$("#d-"+i).val();
+        sstfdt.push(parseInt(sstftemp));
+        queue2[i]=Math.abs(startingHeadPos-sstfdt[i]);
+      }
+
+      for (let i=0;i<num;i++){
+        var sstftemp=$("#d-"+i).val();
+        sstfdt.push(parseInt(sstftemp));
+          for (let j=i+1;j<num;j++){
+            if(queue2[i]>queue2[j]){
+               tempt=queue2[i];
+               queue2[i]=queue2[j];
+               queue2[j]=tempt;
+
+               tempt=sstfdt[i];
+               sstfdt[i]=sstfdt[j];
+               sstfdt[j]=tempt;
+            }
+          }
+          console.log(JSON.stringify({x:sstftemp,y:(i+1)*10}));
+          sstfdtp.push({x:sstfdt[i],y:(i+1)*10});  
+      }
+      
+      sstftemp = JSON.parse(JSON.stringify(sstfdtp));
+      sstftemp.sort(function(a,b){return b.x-a.x});
+      max=parseInt(sstftemp[0].x)+10;
+      console.log()
+      chartDraw(sstfdtp);
+      calSeek();
+      e.preventDefault();
+    });
+    
+    function calSeek(){
+      for(let i=0;i<num;i++){
+        seekTime += Math.abs(sstfdt[i]-headCurrentPos);
+        headCurrentPos = sstfdt[i];
+      }
+      $("#res").html("<span style='color: green; text-align:center'>Seek sequence = "+seekTime+"</span>")
+    }
+    
+    
+    function chartDraw(data){
+        
+      var chart = new CanvasJS.Chart("chartContainer",
+      {
+        animationEnabled:true,
+        zoomEnabled:true,
+        zoomType:"xy",
+        title: {
+          text: "SSTF Disk_Scheduling"
+        },
+        axisX:{
+          title:"Tracks",
+          titleFontSize:30,
+          interval: 20,
+          minimum: 0,
+          maximum: max
+        },
+        axisY:{
+          lineThickness : 0,
+          gridThickness : 0,
+          tickThickness : 0,
+          labelFormatter: function(e){
+            return "";
+          }
+        },
+        data: [
+
+        {
+          type: "line",            
+          color: "Red",
+          yValueFormatString:"Tracks",
+          dataPoints: data
+        }
+        ]        
+      });
+      chart.render();
+    }
+  }
+  </script>
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-color: lightgray">
+
+    
+    
+
+  <center><h1><b>Disk Scheduling-SSTF</b></h1></center> 
+  <div id="container" style="overflow: auto; text-align: center; margin:0 auto;">
+    <div id="form">
+      <form class="form-inline" id="sdet">
+      <div class="form-group">
+        <input type="text" class="form-control" id ="ndata" placeholder="Number of tracks">
+        </div>
+        <div class="form-group">
+        <input type="text" class="form-control" id = "spos" placeholder="Initial head position"></div>
+        <input type="submit" class="btn btn-default">
+      </form>
+    </div>
+  </div>
+  <div id="chartContainer" style="height: 300px; width: 600px; margin: 0 auto;"></div>
+  <center><div id="res"></div></center>
+
+  
+  
+</body>
+</html>

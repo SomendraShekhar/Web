@@ -1,0 +1,292 @@
+<style type="text/css">
+  html {
+    overflow: hidden;
+  }
+</style>
+
+<head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <title>Index Page</title>
+
+
+  <style>
+    #newrow {
+      display: inline-block;
+      text-transform: none;
+      margin: 0 20px;
+      opacity: 0.0;
+      /* animation: fadeIn ease 10s;
+      -webkit-animation: fadeIn ease 10s; */
+    }
+
+    .fadeIn {
+      -webkit-animation-duration: 2s;
+      animation-duration: 2s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      -webkit-animation-name: fadeIn;
+      animation-name: fadeIn;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <div class="container-fluid border border-primary">
+    <div class="row">
+      <!-- 1st row  -->
+      <p style="width: 100%" class=" text-white text-center p-3 mb-4 bg-info">Student Enrollment Form</p>
+    </div>
+
+    <div style="height: 79%; overflow: auto;" class="row justify-content-around">
+      <!-- 2nd row -->
+      <div class="col-5">
+        <!-- 1st column -->
+        <form id="myform" action="">
+          <div class="form-group row">
+            <label for="inputName" id="name" class="col-sm-4 col-form-label">Name</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" id="inputName" required>
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label for="inputEmail" id="Email" class="col-sm-4 col-form-label">Email</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" id="inputEmail" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="inputWebsite" id="website" class="col-sm-4 col-form-label">Website</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" id="inputWebsite" required>
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label for="inputImageLink" id="ImageLink" class="col-sm-4 col-form-label">Image Link</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" id="inputImageLink" required>
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label for="Gender" id='Gender' class="col-sm-4 col-form-label">Gender</label>
+            <div class="col-sm-7">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="Gender" value="Male" id="exampleRadios1" value="Male"
+                  checked>
+                <label class="form-check-label" for="Male">
+                  Male
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="Gender" name="Female" id="exampleRadios2"
+                  value="Female">
+                <label class="form-check-label" for="Female">
+                  Female
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="form-group row">
+            <label for="Skills" id="Skills" class="col-sm-4 col-form-label">Skills</label>
+            <div class="col-sm-7">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" name="Skills" type="checkbox" id="inlineCheckbox1" value="Java" checked>
+                <label class="form-check-label" for="Java">Java</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" name="Skills" type="checkbox" id="inlineCheckbox2" value="HTML">
+                <label class="form-check-label" for="HTML">HTML</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" name="Skills" type="checkbox" id="inlineCheckbox3" value="CSS">
+                <label class="form-check-label" for="CSS">CSS</label>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="form-group row">
+            <div class="col-lg-4">
+              <button id="enroll" onclick="validate();" class="btn btn-primary">Enroll Student</button>
+            </div>
+            <div class="col-lg-4">
+              <button class="btn btn-danger" onclick='document.getElementById("myform").reset();'
+                value="Reset form">Clear</button>
+            </div>
+          </div>
+
+
+        </form>
+      </div>
+      <span class="border border-info"></span>
+      <div class="col-5">
+        <p class="h4 text-center">Enrolled Students</p>
+        <table id="tab" style="display: none;" class="table table-sm table-responsive-sm table-responsive-md table-responsive-lg">
+          <thead>
+            <tr class="col" style="  background-color:#a7c843;">
+              <th class="col" style=" border: 3px solid #82a320;">Description</th>
+              <th class="col" style=" border: 3px solid #82a320;">Image</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- 3rd row -->
+      <p style="width: 100%;" class="text-white text-center mt-5 mb-0  bg-info">Copyright 2020 2021 by Fresher Training
+      </p>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+
+
+
+
+<script type="text/javascript">
+
+  function validate() {
+    $('form').submit(function (e) {
+      e.preventDefault();
+    });
+    let butEnroll = document.querySelector('#enroll');
+    let table = document.querySelector('table');
+
+    let inpName = document.querySelector('#inputName');
+    let inpEmail = document.querySelector('#inputEmail');
+    let inpWebsite = document.querySelector('#inputwebsite');
+    let inpImageLink = document.querySelector('#inputImageLink');
+    let inpGender = document.getElementsByName('Gender');
+    let inpSkills = document.getElementsByName('Skills');
+    var r = document.querySelector(':root');
+    var regexFORemail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var regexFORwebsite = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/;
+
+    if (inpName.value == " " || inpEmail.value == "" || inpWebsite.value == "" || inpImageLink.value == "") {
+      alert('please enter all values');
+      return;
+    }
+    else if (!regexFORemail.test(inpEmail.value)) {
+      alert('please enter a valid Email');
+      return;
+    }
+    else if (!regexFORwebsite.test(inpWebsite.value)) {
+      alert('please enter a valid website');
+      return;
+    }
+    document.getElementById("tab").style.display = 'block';
+
+    let name = inpName.value;
+    let email = inpEmail.value;
+    let web = inpWebsite.value;
+    let img = inpImageLink.value;
+    var skillsCheckedItems = ""
+
+
+    for (i = 0; i < inpGender.length; i++) {
+      if (inpGender[i].checked)
+        var gen = inpGender[i].value;
+    }
+
+    for (i = 0; i < inpSkills.length; i++) {
+      if (inpSkills[i].checked)
+        skillsCheckedItems += inpSkills[i].value + "\n";
+    }
+
+    var rows = table.getElementsByTagName('tr');
+    // for (i = 0; i < rows.length; i++)
+    // console.log(rows[i]);
+    // var colors = getComputedStyle(r);
+    // var color = 0;
+    // var prev = rows[rows.length-1].style.backgroundColor;
+    // console.log(rows[rows.length - 1]);
+    // console.log(prev);
+    fadeIn = "newRow" + rows.length.toString();
+    console.log(fadeIn);
+    if (rows.length % 2 == 0) {
+
+      let template = `
+      <tr  class="fadeIn col" style=" background-color: #ebf2d3;" >
+        <td class="col" style="border: 3px solid darkolivegreen;">
+                                            <b>${name}</b> <br>
+                                            ${email} <br>
+                                            <a href="${web}" target="_blank" rel="noopener noreferrer">${web}</a><br>
+                                            ${gen}<br>
+                                            ${skillsCheckedItems}</td>
+        <td  class="col" style="border: 3px solid darkolivegreen;"><img  src="${img}" height="100%" width="100%"></td>
+        
+      </tr>`
+        ;
+
+      table.innerHTML += template;
+
+    }
+
+    else {
+
+      let template = `
+      <tr class="fadeIn col " style=" background-color: white;" >
+        <td scope="col" style=" border: 3px solid darkolivegreen;">
+                                            <b>${name}</b> <br>
+                                            ${email} <br>
+                                            <a href="${web}" style="text-align: justify;" target="_blank" rel="noopener noreferrer">${web}</a><br>
+                                            ${gen}<br>
+                                            ${skillsCheckedItems}</td>
+        <td  class="col" style="border: 3px solid darkolivegreen;"><img src="${img}" height="100%" width="100%"></td>
+        
+      </tr>`
+        ;
+
+      table.innerHTML += template;
+    }
+
+  }
+</script>
+
+</html>
